@@ -196,11 +196,9 @@ export function HomePage() {
           <Image
             src={heroImg}
             alt="Processional cleaner mopping a bright modern floor"
-            fill
             className="w-full h-full object-cover"
             style={{ opacity: 0.2 }}
             placeholder="blur"
-            priority
           />
         </div>
         <div
@@ -277,17 +275,277 @@ export function HomePage() {
             </div>
 
             <div className="flex flex-wrap gap-6 mt-10">
-                {[['100+', 'Happy Clients'], ['5★', 'Average Rating'], ['100%', 'Satisfaction Guaranteed']].map(([val, label]) => (
-                    <div key={label} >
-                        <div style={{ fontFamily: "var(--font-lora), serif", color: "#047A95", fontSize: "1.5rem", fontWeight: 600 }}>{val}</div>
-                        <div style={{ fontFamily: "var(--font-jakarta), sans-serif", color: "rgba(255,255,255,0.6)", fontSize: "0.75rem" }}>{label}</div>
-                    </div>
-                ))}
+              {[
+                ["100+", "Happy Clients"],
+                ["5★", "Average Rating"],
+                ["100%", "Satisfaction Guaranteed"],
+              ].map(([val, label]) => (
+                <div key={label}>
+                  <div
+                    style={{
+                      fontFamily: "var(--font-lora), serif",
+                      color: "#047A95",
+                      fontSize: "1.5rem",
+                      fontWeight: 600,
+                    }}
+                  >
+                    {val}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: "var(--font-jakarta), sans-serif",
+                      color: "rgba(255,255,255,0.6)",
+                      fontSize: "0.75rem",
+                    }}
+                  >
+                    {label}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
-      
+
+      {/* Services Snapshot */}
+      <section style={{ backgroundColor: "#f0f6ff" }} className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <p
+              style={{
+                fontFamily: "var(--font-jakarta), sans-serif",
+                color: "#047A95",
+                fontWeight: 600,
+                letterSpacing: "0.08em",
+              }}
+              className="text-xs uppercase mb-2"
+            >
+              What We Offer
+            </p>
+            <h2
+              style={{
+                fontFamily: "var(--font-lora), serif",
+                color: "#012D63",
+                fontWeight: "clamp(1.6rem, 3vw, 2.2rem)",
+              }}
+            >
+              Cleaning Solutions for Every Need
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: <Home size={28} style={{ color: "#047A95" }} />,
+                title: "Regular Cleans",
+                desc: "Keep your home consistently fresh with weekly, bi-weekly, or monthly scheduled cleanings tailored to your lifestyle.",
+                href: "/services",
+              },
+              {
+                icon: <Sparkles size={28} style={{ color: "#047A95" }} />,
+                title: "Deep Cleans",
+                desc: "A thorough top-to-bottom clean that reaches every corner - perfect for seasonal rereshes or when your space needs extra attention.",
+                href: "/services",
+              },
+              {
+                icon: <CheckCircle2 size={28} style={{ color: "#047A95" }} />,
+                title: "Move In / Move Out",
+                desc: "Leave your old place spotless or get your new home move-in ready. We handle everything so you can focus on the next chapter.",
+                href: "/services",
+              },
+            ].map((s) => (
+              <Link key={s.title} href={s.href} className="no-underline group">
+                <div
+                  style={{
+                    backgroundColor: "#fff",
+                    border: "1px solid rgba(1,45,99,0.08)",
+                    transition: "box-shadow 0.2s, transform 0.2s",
+                  }}
+                  className="rounded-2xl p-7 h-full hover:shadow-lg group-hover:-translate-y-1"
+                >
+                  <div
+                    style={{ backgroundColor: "#f0f6ff" }}
+                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+                  >
+                    {s.icon}
+                  </div>
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-lora), serif",
+                      color: "#012D63",
+                      fontSize: "1.15rem",
+                    }}
+                    className="mb-2"
+                  >
+                    {s.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-jakarta), sans-serif",
+                      color: "#4a6a99",
+                      lineHeight: 1.7,
+                    }}
+                    className="text-sm"
+                  >
+                    {s.desc}
+                  </p>
+                  <div
+                    className="flex items-center gap-1 mt-4"
+                    style={{
+                      color: "#047A95",
+                      fontFamily: "var(--font-jakarta), sans-serif",
+                      fontWeight: 600,
+                      fontSize: "0.8rem",
+                    }}
+                  >
+                    Learn More <ArrowRight size={14} />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Google Reviews */}
+      <section className="py-20 px-6" style={{ backgroundColor: "#fff " }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <p
+              style={{
+                fontFamily: "var(--font-jakarta), sans-serif",
+                color: "#047A95",
+                fontWeight: 600,
+                letterSpacing: "0.08em",
+              }}
+              className="text-xs uppercase mb-2"
+            >
+              What Our Clients Say
+            </p>
+            <h2
+              style={{
+                fontFamily: "var(--font-lora), serif",
+                color: "#012D63",
+                fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
+              }}
+            >
+              Google Reviews
+            </h2>
+            <div className="flex items-center justify-center gap-2 mt-3">
+              <div className="flex gap-0 5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} size={18} fill="#047A95" stroke="#047A95" />
+                ))}
+              </div>
+              <span
+                style={{
+                  fontFamily: "var(--font-jakarta), sans-serif",
+                  color: "#012D63",
+                  fontWeight: 600,
+                }}
+              >
+                5.0
+              </span>
+              <span
+                style={{
+                  fontFamily: "var(--font-jakarta), sans-serif",
+                  color: "#4a6a99",
+                }}
+                className="text-sm"
+              >
+                · 6 reviews
+              </span>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {reviews.map((r) => (
+              <div
+                key={r.name}
+                style={{
+                  backgroundColor: "#fff",
+                  border: "1px solid rgba(1,45,99,0.1)",
+                  borderRadius: "1rem",
+                }}
+                className="p-6 shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div
+                    style={{
+                      backgroundColor: "#012D63",
+                      color: "#fff",
+                      fontFamily: "var(--font-jakarta), sans-serif",
+                      fontWeight: 700,
+                      fontSize: "0.8rem",
+                    }}
+                    className="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
+                  >
+                    {r.initials}
+                  </div>
+                  <div>
+                    <div
+                      style={{
+                        fontFamily: "var(--font-jakarta), sans-serif",
+                        fontWeight: 600,
+                        color: "#012D63",
+                      }}
+                      className="text-sm"
+                    >
+                      {r.name}
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: "var(--font-jakarta), sans-serif",
+                        color: "#4a6a99",
+                      }}
+                      className="text-xs"
+                    >
+                      {r.date}
+                    </div>
+                  </div>
+                  <div className="ml-auto">
+                    {/* Google icon */}
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                        fill="#4285F4"
+                      />
+                      <path
+                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                        fill="#34A853"
+                      />
+                      <path
+                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                        fill="#FBBC05"
+                      />
+                      <path
+                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                        fill="#EA4335"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <StarRating count={r.rating} />
+                <p
+                  style={{
+                    fontFamily: "var(--font-jakarta), sans-serif",
+                    color: "#4a6a99",
+                    lineHeight: 1.65,
+                  }}
+                  className="text-sm mt-3"
+                >
+                  {r.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
     </div>
   );
 }
