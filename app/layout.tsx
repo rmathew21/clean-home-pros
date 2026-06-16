@@ -20,7 +20,8 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   title: "Clean Home Pros LLC | Professional Cleaning Services",
-  description: "Clean Home Pros LLC delivers exceptional residential cleaning with attention to every detail. Regular cleans, deep cleans, and move in/out services. Trusted by hundreds of families.",
+  description:
+    "Clean Home Pros LLC delivers exceptional residential cleaning with attention to every detail. Regular cleans, deep cleans, and move in/out services. Trusted by hundreds of families.",
 };
 
 export default function RootLayout({

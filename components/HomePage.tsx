@@ -546,6 +546,82 @@ export function HomePage() {
       </section>
 
       {/* FAQ */}
+      <section style={{ backgroundColor: "#f0f6ff" }} className="py-20 px-6">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <p
+              style={{
+                fontFamily: "var(--font-jakarta), sans-serif",
+                color: "#047A95",
+                fontWeight: 600,
+                letterSpacing: "0.08em",
+              }}
+              className="text-xs uppercase mb-2"
+            >
+              FAQ
+            </p>
+            <h2
+              style={{
+                fontFamily: "var(--font-lora), serif",
+                color: "#012D63",
+                fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
+              }}
+            >
+              Frequently Asked Questions
+            </h2>
+          </div>
+          <div
+            style={{
+              backgroundColor: "#fff",
+              borderRadius: "1.25rem",
+              padding: "0 1.5rem",
+              border: "1px solid rgba(1,45,99,0.08)",
+            }}
+          >
+            {faqs.map((faq) => (
+              <FAQItem key={faq.q} q={faq.q} a={faq.a} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section style={{ backgroundColor: "#047A95" }} className="py-16 px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2
+            style={{
+              fontFamily: "var(--font-lora), serif",
+              color: "#fff",
+              fontSize: "clamp(1.5rem, 3vw, 2rem)",
+            }}
+            className="mb-4"
+          >
+            Ready for a Sparkling Clean Home?
+          </h2>
+          <p
+            style={{
+              fontFamily: "var(--font-jakarta), sans-serif",
+              color: "rgba(255,255,255,0.85)",
+              lineHeight: 1.7,
+            }}
+            className="text-sm mb-7"
+          >
+            Get a free quote in minutes. No commitment, no hassle - just a
+            cleaner home waiting for you.
+          </p>
+          <Link
+            href="/contact"
+            style={{
+              backgroundColor: "#012D63",
+              fontFamily: "var(--font-jakarta), sans-serif",
+              fontWeight: 600,
+            }}
+            className="inline-flex items-center gap-2 text-white px-8 py-3 rounded-full text-sm no-underline hover:opacity-90 transition-opacity"
+          >
+            Request a Free Quote <ArrowRight size={16} />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
