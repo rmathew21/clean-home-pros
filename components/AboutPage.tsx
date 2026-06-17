@@ -151,6 +151,74 @@ export function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Values */}
+      <section style={{ backgroundColor: "#f0f6ff" }} className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <p
+              style={{
+                fontFamily: "var(--font-jakarta), sans-serif",
+                color: "#047A95",
+                fontWeight: 600,
+                letterSpacing: "0.08em",
+              }}
+              className="text xs uppercase mb-2"
+            >
+              What Drives Us
+            </p>
+            <h2
+              style={{
+                fontFamily: "var(--font-lora), serif",
+                color: "#012D63",
+                fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
+              }}
+            >
+              Our Core Values
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {values.map((v) => (
+              <div
+                key={v.title}
+                style={{
+                  backgroundColor: "#fff",
+                  border: "1px solid rgba(1,45,99,0.08)",
+                  borderRadius: "1rem",
+                }}
+                className="p-7"
+              >
+                <div
+                  style={{ backgroundColor: "#f0f6ff" }}
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
+                >
+                  {v.icon}
+                </div>
+                <h3
+                  style={{
+                    fontFamily: "var(--font-lora), serif",
+                    color: "#012D63",
+                    fontSize: "1.05rem",
+                  }}
+                  className="mb-2"
+                >
+                  {v.title}
+                </h3>
+                <p
+                  style={{
+                    fontFamily: "var(--font-jakarta), sans-serif",
+                    color: "#4a6a99",
+                    lineHeight: 1.7,
+                  }}
+                  className="text-sm"
+                >
+                  {v.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
