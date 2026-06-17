@@ -11,8 +11,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Image from "next/image";
-import { ImageWithFallback } from "./ImageWithFallback";
-import heroImg from "@/app/assets/vitaly-gariev-2NcTLdFHpH8-unsplash.jpg";
+import heroImg from "@/app/assets/getty-images-U6hzAypFZMc-unsplash.jpg";
 
 const faqs = [
   {
