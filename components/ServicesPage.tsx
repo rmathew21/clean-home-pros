@@ -19,6 +19,8 @@ const regularFrequencies = [
       "Dusting all surfaces",
       "Vacuuming & mopping floors",
       "Kitchen wipe-down",
+      "Bathroom sanitizing",
+      "Trash removal",
       "Bed linen change (optional)",
     ],
   },
@@ -202,7 +204,7 @@ export function ServicesPage() {
                       fontSize: "0.65rem",
                       letterSpacing: "0.08em",
                     }}
-                    className="absolute top-4 right-4 text-white px-2 5 py-1 rounded-full uppercase"
+                    className="absolute top-4 right-4 text-white px-2.5 py-1 rounded-full uppercase"
                   >
                     {freq.badge}
                   </div>
