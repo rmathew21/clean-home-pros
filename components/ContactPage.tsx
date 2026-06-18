@@ -11,6 +11,7 @@ import {
   User,
   Sparkles,
   ArrowRight,
+  MessageSquare,
 } from "lucide-react";
 
 const NAVY = "#012D63";
@@ -64,6 +65,12 @@ const pillButtonStyle: React.CSSProperties = {
   padding: "0.8rem 1.6rem",
   cursor: "pointer",
 };
+
+const PHONE_DISPLAY = "(281) 846-4844";
+const PHONE_E164 = "+12818464844";
+const SMS_BODY = encodeURIComponent(
+  "Hi Clean Home Pros, I'd like a quote for "
+);
 
 function ChoiceButton({
   selected,
@@ -403,258 +410,319 @@ export function ContactPage() {
           )}
 
           {/* Right request free consultation form */}
-          {consultSubmitted ? (
-            <SuccessCard message="Your consultation request is in. We&rsquo;ll reach out using your preferred method to confirm details." />
-          ) : (
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "2rem" }}
+          >
+            {/* Call or text card */}
             <div style={cardStyle}>
-              <div
+              <h2
                 style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
+                  fontFamily: FONT_SERIF,
+                  color: NAVY,
+                  fontSize: "1.5rem",
                   marginBottom: "0.4rem",
                 }}
               >
-                <Sparkles size={18} style={{ color: TEAL }} />
-                <h2
-                  style={{
-                    fontFamily: FONT_SERIF,
-                    color: NAVY,
-                    fontSize: "1.5rem",
-                  }}
-                >
-                  Request a free consultation
-                </h2>
-              </div>
+                Call or text us
+              </h2>
               <p
                 style={{
                   fontFamily: FONT_SANS,
                   color: MUTED,
                   fontSize: "0.9rem",
-                  marginBottom: "1.5rem",
+                  marginBottom: "1.25rem",
                 }}
               >
-                A few quick questions so we can tailor your quote &mdash; no
-                obligation.
+                Prefer to talk now? Reach us directly &mdash; we usually reply
+                within the hour.
               </p>
-
-              {!consultOpen ? (
-                <button
-                  type="button"
-                  onClick={() => setConsultOpen(true)}
-                  style={pillButtonStyle}
+              <div
+                style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}
+              >
+                <a
+                  href={`tel:${PHONE_E164}`}
+                  style={{ ...pillButtonStyle, textDecoration: "none" }}
                 >
-                  Request Consultation
-                  <ArrowRight size={18} />
-                </button>
-              ) : (
-                <form onSubmit={handleConsultSubmit}>
-                  {/* 1. Contact method */}
-                  <Step label="What&rsquo;s the best way to reach you?">
-                    <ChoiceButton
-                      selected={method === "phone"}
-                      onClick={() => setMethod("phone")}
-                    >
-                      <span
-                        style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "0.4rem",
-                        }}
-                      >
-                        <Phone size={15} /> Phone
-                      </span>
-                    </ChoiceButton>
-                    <ChoiceButton
-                      selected={method === "email"}
-                      onClick={() => setMethod("email")}
-                    >
-                      <span
-                        style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "0.4rem",
-                        }}
-                      >
-                        <Mail size={15} /> Email
-                      </span>
-                    </ChoiceButton>
-                  </Step>
+                  <Phone size={17} /> Call
+                </a>
+                <a
+                  href={`sms:${PHONE_E164}?&body=${SMS_BODY}`}
+                  style={{
+                    ...pillButtonStyle,
+                    textDecoration: "none",
+                    backgroundColor: "transparent",
+                    color: NAVY,
+                    border: `2px solid ${TEAL}`,
+                  }}
+                >
+                  <MessageSquare size={17} /> Text
+                </a>
+              </div>
+              <p
+                style={{
+                  fontFamily: FONT_SANS,
+                  color: MUTED,
+                  fontSize: "0.85rem",
+                  marginTop: "1rem",
+                }}
+              >
+                {/* {PHONE_DISPLAY} */}
+              </p>
+            </div>
 
-                  {/* 2. phone or email field */}
-                  {method === "phone" && (
-                    <div style={{ marginTop: "1rem" }}>
-                      <label style={labelStyle} htmlFor="c-phone">
-                        Your phone number
-                      </label>
-                      <input
-                        id="c-phone"
-                        type="tel"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        style={inputStyle}
-                        placeholder="(281) 555-5555"
-                      />
-                    </div>
-                  )}
-                  {method === "email" && (
-                    <div style={{ marginTop: "1rem" }}>
-                      <label style={labelStyle} htmlFor="c-email">
-                        Your email address
-                      </label>
-                      <input
-                        id="c-email"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        style={inputStyle}
-                        placeholder="you@example.com"
-                      />
-                    </div>
-                  )}
+            {consultSubmitted ? (
+              <SuccessCard message="Your consultation request is in. We&rsquo;ll reach out using your preferred method to confirm details." />
+            ) : (
+              <div style={cardStyle}>
+                <div
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                    marginBottom: "0.4rem",
+                  }}
+                >
+                  <Sparkles size={18} style={{ color: TEAL }} />
+                  <h2
+                    style={{
+                      fontFamily: FONT_SERIF,
+                      color: NAVY,
+                      fontSize: "1.5rem",
+                    }}
+                  >
+                    Request a free consultation
+                  </h2>
+                </div>
+                <p
+                  style={{
+                    fontFamily: FONT_SANS,
+                    color: MUTED,
+                    fontSize: "0.9rem",
+                    marginBottom: "1.5rem",
+                  }}
+                >
+                  A few quick questions so we can tailor your quote &mdash; no
+                  obligation.
+                </p>
 
-                  {/* 3. name */}
-                  {showName && (
-                    <div style={{ marginTop: "1.4rem" }}>
-                      <label style={labelStyle} htmlFor="c-name">
-                        And your name?
-                      </label>
-                      <div style={{ position: "relative" }}>
-                        <User
-                          size={16}
+                {!consultOpen ? (
+                  <button
+                    type="button"
+                    onClick={() => setConsultOpen(true)}
+                    style={pillButtonStyle}
+                  >
+                    Request Consultation
+                    <ArrowRight size={18} />
+                  </button>
+                ) : (
+                  <form onSubmit={handleConsultSubmit}>
+                    {/* 1. Contact method */}
+                    <Step label="What&rsquo;s the best way to reach you?">
+                      <ChoiceButton
+                        selected={method === "phone"}
+                        onClick={() => setMethod("phone")}
+                      >
+                        <span
                           style={{
-                            color: MUTED,
-                            position: "absolute",
-                            left: "0.8rem",
-                            top: "50%",
-                            transform: "translateY(-50%)",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "0.4rem",
                           }}
-                        />
+                        >
+                          <Phone size={15} /> Phone
+                        </span>
+                      </ChoiceButton>
+                      <ChoiceButton
+                        selected={method === "email"}
+                        onClick={() => setMethod("email")}
+                      >
+                        <span
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "0.4rem",
+                          }}
+                        >
+                          <Mail size={15} /> Email
+                        </span>
+                      </ChoiceButton>
+                    </Step>
+
+                    {/* 2. phone or email field */}
+                    {method === "phone" && (
+                      <div style={{ marginTop: "1rem" }}>
+                        <label style={labelStyle} htmlFor="c-phone">
+                          Your phone number
+                        </label>
                         <input
-                          id="c-name"
-                          type="text"
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                          style={{ ...inputStyle, paddingLeft: "2.3rem" }}
-                          placeholder="Your name"
+                          id="c-phone"
+                          type="tel"
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                          style={inputStyle}
+                          placeholder="(281) 555-5555"
                         />
                       </div>
-                    </div>
-                  )}
+                    )}
+                    {method === "email" && (
+                      <div style={{ marginTop: "1rem" }}>
+                        <label style={labelStyle} htmlFor="c-email">
+                          Your email address
+                        </label>
+                        <input
+                          id="c-email"
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          style={inputStyle}
+                          placeholder="you@example.com"
+                        />
+                      </div>
+                    )}
 
-                  {/* 4. Services type */}
-                  {showService && (
-                    <Step label="Which service are you interested in?">
-                      {(
-                        Object.keys(SERVICE_LABELS) as Exclude<
-                          ServiceType,
-                          ""
-                        >[]
-                      ).map((s) => (
-                        <ChoiceButton
-                          key={s}
-                          selected={service === s}
-                          onClick={() => {
-                            setService(s);
-                            if (s !== "regular") setFrequency("");
-                          }}
-                        >
-                          {SERVICE_LABELS[s]}
-                        </ChoiceButton>
-                      ))}
-                    </Step>
-                  )}
+                    {/* 3. name */}
+                    {showName && (
+                      <div style={{ marginTop: "1.4rem" }}>
+                        <label style={labelStyle} htmlFor="c-name">
+                          And your name?
+                        </label>
+                        <div style={{ position: "relative" }}>
+                          <User
+                            size={16}
+                            style={{
+                              color: MUTED,
+                              position: "absolute",
+                              left: "0.8rem",
+                              top: "50%",
+                              transform: "translateY(-50%)",
+                            }}
+                          />
+                          <input
+                            id="c-name"
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            style={{ ...inputStyle, paddingLeft: "2.3rem" }}
+                            placeholder="Your name"
+                          />
+                        </div>
+                      </div>
+                    )}
 
-                  {/* 5. Frequency (only for regular cleans) */}
-                  {showFrequency && (
-                    <Step label="How often would you like a regular clean?">
-                      {(
-                        [
-                          ["weekly", "Weekly"],
-                          ["biweekly", "Bi-weekly"],
-                          ["monthly", "Monthly"],
-                          ["onetime", "One-time"],
-                        ] as [Frequency, string][]
-                      ).map(([value, lbl]) => (
-                        <ChoiceButton
-                          key={value}
-                          selected={frequency === value}
-                          onClick={() => setFrequency(value)}
-                        >
-                          {lbl}
-                        </ChoiceButton>
-                      ))}
-                    </Step>
-                  )}
-
-                  {/* 6. area + 7. details */}
-                  {showAreaAndDetails && (
-                    <>
-                      <Step label="What area are you in?">
-                        {AREAS.map((a) => (
+                    {/* 4. Services type */}
+                    {showService && (
+                      <Step label="Which service are you interested in?">
+                        {(
+                          Object.keys(SERVICE_LABELS) as Exclude<
+                            ServiceType,
+                            ""
+                          >[]
+                        ).map((s) => (
                           <ChoiceButton
-                            key={a}
-                            selected={area === a}
-                            onClick={() => setArea(a)}
+                            key={s}
+                            selected={service === s}
+                            onClick={() => {
+                              setService(s);
+                              if (s !== "regular") setFrequency("");
+                            }}
                           >
-                            <span
-                              style={{
-                                display: "inline-flex",
-                                alignItems: "center",
-                                gap: "0.4rem",
-                              }}
-                            >
-                              <MapPin size={15} /> {a}
-                            </span>
+                            {SERVICE_LABELS[s]}
                           </ChoiceButton>
                         ))}
                       </Step>
-                      <div style={{ marginTop: "0.8rem" }}>
-                        <input
-                          type="text"
-                          value={area}
-                          onChange={(e) => setArea(e.target.value)}
-                          style={inputStyle}
-                          placeholder="Or type your city / neighborhood"
-                          aria-label="Your area"
-                        />
-                      </div>
+                    )}
 
-                      <div style={{ marginTop: "1.4rem" }}>
-                        <label style={labelStyle} htmlFor="c-details">
-                          Anything else we should know?
-                        </label>
-                        <textarea
-                          id="c-details"
-                          rows={3}
-                          value={details}
-                          onChange={(e) => setDetails(e.target.value)}
-                          style={{ ...inputStyle, resize: "vertical" }}
-                          placeholder="Square footage, pets, problem areas.."
-                        />
-                      </div>
-                    </>
-                  )}
+                    {/* 5. Frequency (only for regular cleans) */}
+                    {showFrequency && (
+                      <Step label="How often would you like a regular clean?">
+                        {(
+                          [
+                            ["weekly", "Weekly"],
+                            ["biweekly", "Bi-weekly"],
+                            ["monthly", "Monthly"],
+                            ["onetime", "One-time"],
+                          ] as [Frequency, string][]
+                        ).map(([value, lbl]) => (
+                          <ChoiceButton
+                            key={value}
+                            selected={frequency === value}
+                            onClick={() => setFrequency(value)}
+                          >
+                            {lbl}
+                          </ChoiceButton>
+                        ))}
+                      </Step>
+                    )}
 
-                  {/* submit */}
-                  <button
-                    type="submit"
-                    disabled={!canSubmitConsult}
-                    style={{
-                      ...pillButtonStyle,
-                      width: "100%",
-                      marginTop: "1.6rem",
-                      opacity: canSubmitConsult ? 1 : 0.45,
-                      cursor: canSubmitConsult ? "pointer" : "not-allowed",
-                    }}
-                  >
-                    <Check size={18} />
-                    Submit Consultation Request
-                  </button>
-                </form>
-              )}
-            </div>
-          )}
+                    {/* 6. area + 7. details */}
+                    {showAreaAndDetails && (
+                      <>
+                        <Step label="What area are you in?">
+                          {AREAS.map((a) => (
+                            <ChoiceButton
+                              key={a}
+                              selected={area === a}
+                              onClick={() => setArea(a)}
+                            >
+                              <span
+                                style={{
+                                  display: "inline-flex",
+                                  alignItems: "center",
+                                  gap: "0.4rem",
+                                }}
+                              >
+                                <MapPin size={15} /> {a}
+                              </span>
+                            </ChoiceButton>
+                          ))}
+                        </Step>
+                        <div style={{ marginTop: "0.8rem" }}>
+                          <input
+                            type="text"
+                            value={area}
+                            onChange={(e) => setArea(e.target.value)}
+                            style={inputStyle}
+                            placeholder="Or type your city / neighborhood"
+                            aria-label="Your area"
+                          />
+                        </div>
+
+                        <div style={{ marginTop: "1.4rem" }}>
+                          <label style={labelStyle} htmlFor="c-details">
+                            Anything else we should know?
+                          </label>
+                          <textarea
+                            id="c-details"
+                            rows={3}
+                            value={details}
+                            onChange={(e) => setDetails(e.target.value)}
+                            style={{ ...inputStyle, resize: "vertical" }}
+                            placeholder="Square footage, pets, problem areas.."
+                          />
+                        </div>
+                      </>
+                    )}
+
+                    {/* submit */}
+                    <button
+                      type="submit"
+                      disabled={!canSubmitConsult}
+                      style={{
+                        ...pillButtonStyle,
+                        width: "100%",
+                        marginTop: "1.6rem",
+                        opacity: canSubmitConsult ? 1 : 0.45,
+                        cursor: canSubmitConsult ? "pointer" : "not-allowed",
+                      }}
+                    >
+                      <Check size={18} />
+                      Submit Consultation Request
+                    </button>
+                  </form>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </section>
     </div>
