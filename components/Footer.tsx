@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
+import Image from "next/image";
+import logoReversed from "@/app/assets/clean-home-pros-logo-reversed.png"
 
 export function Footer() {
   return (
@@ -7,7 +9,10 @@ export function Footer() {
       <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-3 gap-10">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <div
+            <Link href='/' className="flex items-center text-white no-underline">
+              <Image src={logoReversed} alt="Clean Home Pros" className="h-9 w-auto" priority />
+            </Link>
+            {/* <div
               style={{ backgroundColor: "#047A95" }}
               className="w-8 h-8 rounded-full flex items-center justify-center"
             >
@@ -30,7 +35,7 @@ export function Footer() {
               className="text-lg"
             >
               Clean Home Pros LLC
-            </span>
+            </span> */}
           </div>
           <p
             style={{
