@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
-import logoReversed from "@/app/assets/clean-home-pros-logo-reversed.png"
+import logoReversed from "@/app/assets/clean-home-pros-logo-reversed.png";
 
 export function Footer() {
   return (
@@ -9,8 +9,16 @@ export function Footer() {
       <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-3 gap-10">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <Link href='/' className="flex items-center text-white no-underline">
-              <Image src={logoReversed} alt="Clean Home Pros" className="h-9 w-auto" priority />
+            <Link
+              href="/"
+              className="flex items-center text-white no-underline"
+            >
+              <Image
+                src={logoReversed}
+                alt="Clean Home Pros"
+                className="h-9 w-auto"
+                priority
+              />
             </Link>
             {/* <div
               style={{ backgroundColor: "#047A95" }}
@@ -50,10 +58,11 @@ export function Footer() {
           </p>
           <div className="flex gap-3 mt-4">
             <a
-              href="#"
+              href="https://www.facebook.com/profile.php?id=61573592632258"
               aria-label="Facebook"
               style={{ backgroundColor: "rgba(255,255,255,0.1" }}
               className="w-8 h-8 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
+              target="_blank"
             >
               <svg
                 width="15"
@@ -69,10 +78,11 @@ export function Footer() {
               </svg>
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/cleanhomepros832?fbclid=IwY2xjawSheixleHRuA2FlbQIxMABicmlkETFOMEp0aEQwd21NRHJRNUwxc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHogYla6XlUMlIHf8Be1ShPIpWmg_DwoKogO-QiJ15St6kkH0eW16GDGov95C_aem_dhN1dJATJTRzpMgxOrH3Kw"
               aria-label="Instagram"
               style={{ backgroundColor: "rgba(255,255,255,0.1" }}
               className="w-8 h-8 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
+              target="_blank"
             >
               <svg
                 width="15"
@@ -150,7 +160,7 @@ export function Footer() {
                 className="mt-0.5 shrink-0"
                 style={{ color: "#047A95" }}
               />
-              (555) 123-4567
+              (832) 776-9288
             </li>
             <li
               className="flex items-start gap-2 text-sm"
@@ -164,7 +174,7 @@ export function Footer() {
                 className="mt-0.5 shrink-0"
                 style={{ color: "#047A95" }}
               />
-              hello@cleanhomepros.com
+              cleanhomepros@yahoo.com
             </li>
             <li
               className="flex items-start gap-2 text-sm"
@@ -178,20 +188,35 @@ export function Footer() {
                 className="mt-0.5 shrink-0"
                 style={{ color: "#047A95" }}
               />
-              Serving the Greater Metro Area
+              Serving the Greater Houston Area
             </li>
           </ul>
         </div>
       </div>
       <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
         <div
-          className="max-w-6xl mx-auto px-6 py-4 text-center text-xs"
+          className="max-w-6xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs"
           style={{
             color: "rgba(255,255,255,0.4)",
             fontFamily: "var(--font-jakarta), sans-serif",
           }}
         >
-          © {new Date().getFullYear()} Clean Home Pros LLC. All rights reserved.
+          <span>
+            © {new Date().getFullYear()} Clean Home Pros LLC. All rights
+            reserved.
+          </span>
+          <span>
+            Powered by{" "}
+            <a
+              href="https://www.robowebsolutions.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="no underline hover: underline"
+              style={{ color: "rgba(255,255,255,0.7)" }}
+            >
+              Robo Web Solutions
+            </a>
+          </span>
         </div>
       </div>
     </footer>
