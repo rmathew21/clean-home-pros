@@ -351,7 +351,7 @@ export function HomePage() {
               style={{
                 fontFamily: "var(--font-lora), serif",
                 color: "#012D63",
-                fontWeight: "clamp(1.6rem, 3vw, 2.2rem)",
+                fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
               }}
             >
               Cleaning Solutions for Every Need
