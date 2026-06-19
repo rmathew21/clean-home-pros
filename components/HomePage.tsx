@@ -26,10 +26,10 @@ const faqs = [
     q: "What cleaning products do you use?",
     a: "We use professional-grade, eco-friendly cleaning solutions that are safe for your family and pets. Just let us know if you have any specific preferences or sensitivites.",
   },
-  {
-    q: "Are your cleaners insured and background-checked?",
-    a: "Absolutely. All Clean Home Pros team members undergo thorough background checks and we carry full liability insurance and workers' compensation coverage.",
-  },
+  // {
+  //   q: "Are your cleaners insured and background-checked?",
+  //   a: "Absolutely. All Clean Home Pros team members undergo thorough background checks and we carry full liability insurance and workers' compensation coverage.",
+  // },
   {
     q: "What if I'm not satisfied with the cleaning?",
     a: "Your satisaction is our priority. If you're not happy with any aspect of our service, contact us within 24 hours and we'll return to re-clean the area at no extra charge.",
@@ -79,34 +79,38 @@ const reviews = [
     text: "They do a very great job and Im impressed with the quality of cleaning. Very reasonably priced as well. They're always on time and complete the cleaning service in a timely manner. I highly recommend this company for your cleaning needs!",
     initials: "MW",
   },
-  // {
-  //     name: "",
-  //     rating: ,
-  //     date: " ",
-  //     text: "",
-  //     initials: "",
-  // },
-  // {
-  //     name: "",
-  //     rating: ,
-  //     date: " ",
-  //     text: "",
-  //     initials: "",
-  // },
-  // {
-  //     name: "",
-  //     rating: ,
-  //     date: " ",
-  //     text: "",
-  //     initials: "",
-  // },
-  // {
-  //     name: "",
-  //     rating: ,
-  //     date: " ",
-  //     text: "",
-  //     initials: "",
-  // },
+  {
+      name: "Rosalyn Maltz",
+      rating: 5,
+      date: "1 year ago",
+      text: "Lluvia has been cleaning my house for so many years I think of her as family. I trust her completely and know my house will be clean when she gets through.",
+      initials: "RM",
+      source: 'facebook',
+  },
+  {
+      name: "Maryln Appelbaum",
+      rating: 5,
+      date: "1 year ago",
+      text: "Lluvia is great. Everything looks perfect when she is finished and so sparkly clean. Her team has to be excellent too. I highly highly recommend them. You will not be disappointed.",
+      initials: "MA",
+      source: 'facebook',
+  },
+  {
+      name: "Laura Jane",
+      rating: 5,
+      date: "1 year ago",
+      text: "Lluvia and her team are the best. They have been cleaning our home since 2021. Quick and efficient and leave the house sparkling every time. I could not recommend Clean Home Pros more!",
+      initials: "LJ",
+      source: 'facebook',
+  },
+  {
+      name: "Lara Spencer Bryant",
+      rating: 5,
+      date: "1 year ago",
+      text: "Clean Home Pros have been cleaning my home since 2016 after having surgery. What I thought was going to be temporary help cleaning my home while recovering has turned into a beautiful bimonthly relationship with an incredibly detailed cleaning crew whom I love and never want to end.",
+      initials: "LB",
+      source: 'facebook',
+  },
   // {
   //     name: "",
   //     rating: ,
@@ -183,6 +187,28 @@ function StarRating({ count }: { count: number }) {
   );
 }
 
+function GoogleIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
+      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+    </svg>
+  );
+}
+
+function FacebookIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path
+        fill="#1877F2"
+        d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.36c0-3 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.52c-1.49 0-1.96.93-1.96 1.87V12h3.33l-.53 3.47h-2.8v8.38C19.61 22.95 24 17.99 24 12z"
+      />
+    </svg>
+  );
+}
+
 export function HomePage() {
   return (
     <div>
@@ -232,8 +258,8 @@ export function HomePage() {
               }}
               className="mb-6"
             >
-              A Cleaner Home, <br />
-              <span style={{ color: "#047A95" }}>A Happier Life.</span>
+              A Clean Home, <br />
+              <span style={{ color: "#047A95" }}>Is A Happy Home.</span>
             </h1>
             <p
               style={{
@@ -451,7 +477,7 @@ export function HomePage() {
                 }}
                 className="text-sm"
               >
-                · 6 reviews
+                · 10 reviews
               </span>
             </div>
           </div>
@@ -500,9 +526,10 @@ export function HomePage() {
                       {r.date}
                     </div>
                   </div>
-                  <div className="ml-auto">
+                  <div className="ml-auto" aria-label={`Review from ${r.source === 'facebook' ? 'Facebook' : 'Google'}`}>
+                    {r.source === 'facebook' ? <FacebookIcon /> : <GoogleIcon /> }
                     {/* Google icon */}
-                    <svg
+                    {/* <svg
                       width="18"
                       height="18"
                       viewBox="0 0 24 24"
@@ -524,7 +551,7 @@ export function HomePage() {
                         d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                         fill="#EA4335"
                       />
-                    </svg>
+                    </svg> */}
                   </div>
                 </div>
                 <StarRating count={r.rating} />
