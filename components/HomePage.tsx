@@ -209,6 +209,44 @@ function FacebookIcon() {
   );
 }
 
+function ReviewText({ text, limit = 220 }: { text: string; limit?: number }) {
+  const [expanded, setExpanded] = useState(false);
+  const isLong = text.length > limit;
+
+  const cut = text.lastIndexOf(' ', limit);
+  const preview = text.slice(0, cut > 0 ? cut : limit) + "...";
+
+  return (
+    <p
+    style={{
+      fontFamily: "var(--font-jakarta), sans-serif",
+        color: "#4a6a99",
+        lineHeight: 1.65,
+    }}
+     className="text-sm mt-3">
+{expanded || !isLong ? text : preview}
+{isLong && (
+  <button
+  type="button" 
+  onClick={() => setExpanded((v) => !v)}
+  style={{
+    fontFamily: "var(--font-jakarta), sans-serif",
+    color: "#047A95",
+    fontWeight: 600,
+    background: "none",
+    border: "none",
+    padding: 0,
+    marginLeft: "0.35rem",
+    cursor: "pointer",
+  }}
+  className="hover:underline">
+    {expanded ? "Show less" : "Read more"}
+  </button>
+)}
+    </p>
+  )
+}
+
 export function HomePage() {
   return (
     <div>
@@ -555,7 +593,7 @@ export function HomePage() {
                   </div>
                 </div>
                 <StarRating count={r.rating} />
-                <p
+                {/* <p
                   style={{
                     fontFamily: "var(--font-jakarta), sans-serif",
                     color: "#4a6a99",
@@ -564,7 +602,8 @@ export function HomePage() {
                   className="text-sm mt-3"
                 >
                   {r.text}
-                </p>
+                </p> */}
+                <ReviewText text={r.text} />
               </div>
             ))}
           </div>
