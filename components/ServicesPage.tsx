@@ -472,7 +472,7 @@ export function ServicesPage() {
             }}
             className="mb-4"
           >
-            Not Sure Which Service Is Right or You?
+            Not Sure Which Service Is Right for You?
           </h2>
           <p
             style={{
