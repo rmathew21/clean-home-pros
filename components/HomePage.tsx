@@ -611,7 +611,7 @@ export function HomePage() {
           {/* Leave a review CTA */}
           <div className="text-center mt-12">
             <a 
-              href="https://search.google.com/local/writereview?placeid=ChIJ7_wYpDffJIgR5SxBU81y4Uc" 
+              href="https://search.google.com/local/writereview?placeid=ChIJwTxdJia2uKYRGHOyw5-fjnw" 
               target="_blank"
               rel="noopener noreferrer"
               style={{
