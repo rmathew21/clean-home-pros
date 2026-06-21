@@ -607,6 +607,26 @@ export function HomePage() {
               </div>
             ))}
           </div>
+
+          {/* Leave a review CTA */}
+          <div className="text-center mt-12">
+            <a 
+              href="https://search.google.com/local/writereview?placeid=ChIJ7_wYpDffJIgR5SxBU81y4Uc" 
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                backgroundColor: "#047A95",
+                color: "#fff",
+                fontFamily: "var(--font-jakarta), sans-serif",
+                fontWeight: 600,
+                borderRadius: "0.75rem",
+              }}
+              className="inline-flex items-center gap-2 px-7 py-3.5 text-sm shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+              >
+                <Star size={16} fill="#fff" stroke="#fff" />
+                Leave us a Google Review
+              </a>
+          </div>
         </div>
       </section>
 
