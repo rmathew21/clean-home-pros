@@ -20,11 +20,11 @@ const faqs = [
   },
   {
     q: "Do I need to be home during the cleaning?",
-    a: "Not at all! Many of your clients provide a key or access code. Our team is fully vetted, insured, and bonded, so you can trust us in your home.",
+    a: "Not at all! Many of our clients provide a key or access code. Our team is fully vetted, insured, and bonded, so you can trust us in your home.",
   },
   {
     q: "What cleaning products do you use?",
-    a: "We use professional-grade, eco-friendly cleaning solutions that are safe for your family and pets. Just let us know if you have any specific preferences or sensitivites.",
+    a: "We use professional-grade, eco-friendly cleaning solutions that are safe for your family and pets. Just let us know if you have any specific preferences or sensitivities.",
   },
   // {
   //   q: "Are your cleaners insured and background-checked?",
@@ -32,7 +32,7 @@ const faqs = [
   // },
   {
     q: "What if I'm not satisfied with the cleaning?",
-    a: "Your satisaction is our priority. If you're not happy with any aspect of our service, contact us within 24 hours and we'll return to re-clean the area at no extra charge.",
+    a: "Your satisfaction is our priority. If you're not happy with any aspect of our service, contact us within 24 hours and we'll return to re-clean the area at no extra charge.",
   },
 ];
 
