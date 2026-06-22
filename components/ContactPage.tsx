@@ -66,8 +66,8 @@ const pillButtonStyle: React.CSSProperties = {
   cursor: "pointer",
 };
 
-const PHONE_DISPLAY = "(281) 846-4844";
-const PHONE_E164 = "+12818464844";
+const PHONE_DISPLAY = "(832) 776-9288";
+const PHONE_E164 = "+18327769288";
 const SMS_BODY = encodeURIComponent(
   "Hi Clean Home Pros, I'd like a quote for "
 );
