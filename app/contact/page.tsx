@@ -1,4 +1,14 @@
 import { contactMetadata } from "@/lib/metadata";
-export { ContactPage as default } from "@/components/ContactPage";
+import { ContactPage } from "@/components/ContactPage";
+import { BreadcrumbSchema } from "@/components/schema";
 
 export const metadata = contactMetadata;
+
+export default function Page() {
+  return (
+    <>
+      <BreadcrumbSchema page="contact" />
+      <ContactPage />
+    </>
+  );
+}

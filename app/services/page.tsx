@@ -1,5 +1,16 @@
 // import type { Metadata } from "next";
 import { servicesMetadata } from "@/lib/metadata";
+import { ServicesPage } from "@/components/ServicesPage";
+import { ServicesSchema, BreadcrumbSchema } from "@/components/schema";
 
 export const metadata = servicesMetadata;
-export { ServicesPage as default } from '@/components/ServicesPage';
+
+export default function Page() {
+    return (
+        <>
+        <ServicesSchema />
+        <BreadcrumbSchema page='services' />
+        <ServicesPage />
+        </>
+    )
+}
