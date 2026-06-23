@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 const SITE_URL = "https://cleanhomeprosllc.com";
 const SITE_NAME = "Clean Home Pros LLC";
-const OG_IMAGE = "/og-image.jpg";
+// const OG_IMAGE = "/og-image.jpg";
 
 export const rootMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -18,11 +18,11 @@ export const rootMetadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: SITE_NAME,
-    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: SITE_NAME }],
+    // images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: SITE_NAME }],
   },
   twitter: {
     card: "summary_large_image",
-    images: [OG_IMAGE],
+    // images: [OG_IMAGE],
   },
 };
 
