@@ -24,16 +24,24 @@ const faqs = [
   },
   {
     q: "What cleaning products do you use?",
-    a: "We use professional-grade, eco-friendly cleaning solutions that are safe for your family and pets. Just let us know if you have any specific preferences or sensitivities.",
+    a: "We use professional-grade, eco-friendly cleaning solutions that are safe for your family and pets. Just let us know if you have any specific preferences or sensitivities. We will also provide the vacuum cleaner, mops, buckets, and non-scratch sponges (ones designated for kitchens and separate ones for each restroom). We also provide clean and disinfected color-coded rags (yellow for kitchen, blue for restrooms, and green for wood surfaces).",
   },
-  // {
-  //   q: "Are your cleaners insured and background-checked?",
-  //   a: "Absolutely. All Clean Home Pros team members undergo thorough background checks and we carry full liability insurance and workers' compensation coverage.",
-  // },
+  {
+    q: "Are there any cleaning products I need to provide?",
+    a: "Yes, I kindly request that you provide the following products: toilet brushes, paper towels, and trashbags. Additionally, for wood floors, I recommend either Bona, Method Wood Floor cleaner, or Murphys Oil.",
+  },
   {
     q: "What if I'm not satisfied with the cleaning?",
-    a: "Your satisfaction is our priority. If you're not happy with any aspect of our service, contact us within 24 hours and we'll return to re-clean the area at no extra charge.",
+    a: "Your satisfaction is our priority. If you have any concerns or aren't completely satisfied with the cleaning, please let me know as soon as possible so I can address the issue with my team.",
   },
+  {
+    q: "What payment methods do you accept?",
+    a: "I accept payments via cash, check, or Zelle. Payments must be made the same day as the cleaning service."
+  },
+  {
+    q: "Do you have a cancellation policy?",
+    a: "If you ever need to cancel an appointment, I kindly ask for at least a 24 hour notice. Same-day cancellations will incur a $50 fee."
+  }
 ];
 
 const reviews = [
