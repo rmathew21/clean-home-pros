@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
-import logo from "@/app/assets/logo.jpeg";
 import logoReversed from "@/app/assets/clean-home-pros-logo-reversed.png";
 
 export function Navbar() {
@@ -22,13 +21,20 @@ export function Navbar() {
   const isActive = (to: string) =>
     to === "/" ? pathname === "/" : pathname.startsWith(to);
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setOpen(false);
+    if (pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav
       style={{ backgroundColor: "#012D63" }}
       className="sticky top-0 z-50 shadow-md"
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
-        <Link href="/" className="flex items-center text-white no-underline">
+        <Link href="/" onClick={handleLogoClick} className="flex items-center text-white no-underline">
           <Image
             src={logoReversed}
             alt="Clean Home Pros"
