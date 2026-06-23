@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+// import type { Metadata } from "next";
+import { rootMetadata } from "@/lib/metadata";
 import { Plus_Jakarta_Sans, Lora } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
@@ -18,11 +19,7 @@ const lora = Lora({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Clean Home Pros LLC | Professional Cleaning Services",
-  description:
-    "Clean Home Pros LLC delivers exceptional residential cleaning with attention to every detail. Regular cleans, deep cleans, and move in/out services. Trusted by hundreds of families.",
-};
+export const metadata = rootMetadata;
 
 export default function RootLayout({
   children,
