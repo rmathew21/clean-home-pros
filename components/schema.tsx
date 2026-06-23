@@ -151,7 +151,15 @@ export function FaqSchema() {
         name: "What cleaning products do you use?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We use professional-grade, eco-friendly cleaning solutions that are safe for your family and pets. Just let us know if you have any specific preferences or sensitivities.",
+          text: "We use professional-grade, eco-friendly cleaning solutions that are safe for your family and pets. Just let us know if you have any specific preferences or sensitivities. We will also provide the vacuum cleaner, mops, buckets, and non-scratch sponges (ones designated for kitchens and separate ones for each restroom). We also provide clean and disinfected color-coded rags (yellow for kitchen, blue for restrooms, and green for wood surfaces).",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Are there any cleaning products I need to provide?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, I kindly request that you provide the following products: toilet brushes, paper towels, and trashbags. Additionally, for wood floors, I recommend either Bona, Method Wood Floor cleaner, or Murphys Oil.",
         },
       },
       {
@@ -159,7 +167,23 @@ export function FaqSchema() {
         name: "What if I'm not satisfied with the cleaning?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Your satisfaction is our priority. If you're not happy with any aspect of our service, contact us within 24 hours and we'll return to re-clean the area at no extra charge.",
+          text: "Your satisfaction is our priority. If you have any concerns or aren't completely satisfied with the cleaning, please let me know as soon as possible so I can address the issue with my team.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What payment methods do you accept?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "I accept payments via cash, check, or Zelle. Payments must be made the same day as the cleaning service.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you have a cancellation policy?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "If you ever need to cancel an appointment, I kindly ask for at least a 24 hour notice. Same-day cancellations will incur a $50 fee.",
         },
       },
     ],
