@@ -258,7 +258,7 @@ export function HomePage() {
         <div className="absolute inset-0">
           <Image
             src={heroImg}
-            alt="Processional cleaner mopping a bright modern floor"
+            alt="Professional cleaner mopping a bright modern floor"
             className="w-full h-full object-cover"
             style={{ opacity: 0.2 }}
             placeholder="blur"
@@ -406,7 +406,7 @@ export function HomePage() {
               {
                 icon: <Sparkles size={28} style={{ color: "#047A95" }} />,
                 title: "Deep Cleans",
-                desc: "A thorough top-to-bottom clean that reaches every corner - perfect for seasonal rereshes or when your space needs extra attention.",
+                desc: "A thorough top-to-bottom clean that reaches every corner - perfect for seasonal refreshes or when your space needs extra attention.",
                 href: "/services",
               },
               {
@@ -494,7 +494,7 @@ export function HomePage() {
               Google Reviews
             </h2>
             <div className="flex items-center justify-center gap-2 mt-3">
-              <div className="flex gap-0 5">
+              <div className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} size={18} fill="#047A95" stroke="#047A95" />
                 ))}

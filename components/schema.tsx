@@ -24,7 +24,7 @@ export function BusinessSchema() {
       "@type": "Person",
       name: "Lluvia Ayala",
     },
-    image: `${SITE_URL}/og-image.jpg`, //need to confirm real img
+    image: `${SITE_URL}/clean-home-pros-logo.png`, 
     priceRange: "$$",
     areaServed: [
       {

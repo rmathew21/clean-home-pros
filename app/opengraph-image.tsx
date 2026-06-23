@@ -15,7 +15,8 @@ async function loadFont(weight: 500 | 700): Promise<ArrayBuffer> {
       },
     })
   ).text();
-  const src = css.match(/src: url\((.+?)\) format\('(?:truetype|opentype)'\)/);
+  //   const src = css.match(/src: url\((.+?)\) format\('(?:truetype|opentype)'\)/);
+  const src = css.match(/src:\s*url\(([^)]+)\)/);
   if (!src) throw new Error("Failed to parse Google Font CSS");
   return fetch(src[1]).then((r) => r.arrayBuffer());
 }
@@ -107,7 +108,7 @@ export default async function Image() {
       ...size,
       fonts: [
         { name: "Jakarta", data: regular, weight: 500, style: "normal" },
-        { name: "Jakarta", data: regular, weight: 700, style: "normal" },
+        { name: "Jakarta", data: bold, weight: 700, style: "normal" },
       ],
     }
   );
