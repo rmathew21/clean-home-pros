@@ -314,7 +314,7 @@ export function HomePage() {
                 color: '#ffffff',
                 lineHeight: 1.75,
               }}
-              className="text-base mb-8 max-w-lg"
+              className="text-lg mb-8 max-w-lg"
             >
               Clean Home Pros LLC delivers exceptional residential cleaning with
               attention to every detail. Trusted by hundreds of families - on
