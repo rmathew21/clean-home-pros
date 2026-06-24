@@ -310,7 +310,8 @@ export function HomePage() {
             <p
               style={{
                 fontFamily: "var(--font-jakarta), sans-serif",
-                color: "rgba(255,255,255,0.78)",
+                // color: "rgba(255,255,255,0.78)",
+                color: '#ffffff',
                 lineHeight: 1.75,
               }}
               className="text-base mb-8 max-w-lg"
