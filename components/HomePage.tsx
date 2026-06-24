@@ -286,7 +286,7 @@ export function HomePage() {
               <span
                 style={{
                   fontFamily: "var(--font-jakarta), sans-serif",
-                  color: "#047A95",
+                  color: "#22D3EE",
                   fontWeight: 600,
                   letterSpacing: "0.08em",
                 }}
@@ -305,7 +305,7 @@ export function HomePage() {
               className="mb-6"
             >
               A Clean Home, <br />
-              <span style={{ color: "#047A95" }}>Is A Happy Home.</span>
+              <span style={{ color: "#22D3EE" }}>Is A Happy Home.</span>
             </h1>
             <p
               style={{
@@ -355,7 +355,7 @@ export function HomePage() {
                   <div
                     style={{
                       fontFamily: "var(--font-lora), serif",
-                      color: "#047A95",
+                      color: "#22D3EE",
                       fontSize: "1.5rem",
                       fontWeight: 600,
                     }}
