@@ -12,6 +12,10 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import heroImg from "@/app/assets/getty-images-U6hzAypFZMc-unsplash.jpg";
+import heroImgMobile from "@/app/assets/andrej-lisakov-_6XMmChsACc-unsplash.jpg";
+import heroImgMobile2 from "@/app/assets/monika-grabkowska-ZaQCL7EY2Sg-unsplash.jpg"
+import heroImgMobile3 from "@/app/assets/kateryna-hliznitsova-RxblbDLXTmk-unsplash.jpg"
+import heroImgMobile4 from "@/app/assets/andrej-lisakov-bq6scQoQNJE-unsplash.jpg"
 
 const faqs = [
   {
@@ -36,12 +40,12 @@ const faqs = [
   },
   {
     q: "What payment methods do you accept?",
-    a: "I accept payments via cash, check, or Zelle. Payments must be made the same day as the cleaning service."
+    a: "I accept payments via cash, check, or Zelle. Payments must be made the same day as the cleaning service.",
   },
   {
     q: "Do you have a cancellation policy?",
-    a: "If you ever need to cancel an appointment, I kindly ask for at least a 24 hour notice. Same-day cancellations will incur a $50 fee."
-  }
+    a: "If you ever need to cancel an appointment, I kindly ask for at least a 24 hour notice. Same-day cancellations will incur a $50 fee.",
+  },
 ];
 
 const reviews = [
@@ -88,36 +92,36 @@ const reviews = [
     initials: "MW",
   },
   {
-      name: "Rosalyn Maltz",
-      rating: 5,
-      date: "1 year ago",
-      text: "Lluvia has been cleaning my house for so many years I think of her as family. I trust her completely and know my house will be clean when she gets through.",
-      initials: "RM",
-      source: 'facebook',
+    name: "Rosalyn Maltz",
+    rating: 5,
+    date: "1 year ago",
+    text: "Lluvia has been cleaning my house for so many years I think of her as family. I trust her completely and know my house will be clean when she gets through.",
+    initials: "RM",
+    source: "facebook",
   },
   {
-      name: "Maryln Appelbaum",
-      rating: 5,
-      date: "1 year ago",
-      text: "Lluvia is great. Everything looks perfect when she is finished and so sparkly clean. Her team has to be excellent too. I highly highly recommend them. You will not be disappointed.",
-      initials: "MA",
-      source: 'facebook',
+    name: "Maryln Appelbaum",
+    rating: 5,
+    date: "1 year ago",
+    text: "Lluvia is great. Everything looks perfect when she is finished and so sparkly clean. Her team has to be excellent too. I highly highly recommend them. You will not be disappointed.",
+    initials: "MA",
+    source: "facebook",
   },
   {
-      name: "Laura Jane",
-      rating: 5,
-      date: "1 year ago",
-      text: "Lluvia and her team are the best. They have been cleaning our home since 2021. Quick and efficient and leave the house sparkling every time. I could not recommend Clean Home Pros more!",
-      initials: "LJ",
-      source: 'facebook',
+    name: "Laura Jane",
+    rating: 5,
+    date: "1 year ago",
+    text: "Lluvia and her team are the best. They have been cleaning our home since 2021. Quick and efficient and leave the house sparkling every time. I could not recommend Clean Home Pros more!",
+    initials: "LJ",
+    source: "facebook",
   },
   {
-      name: "Lara Spencer Bryant",
-      rating: 5,
-      date: "1 year ago",
-      text: "Clean Home Pros have been cleaning my home since 2016 after having surgery. What I thought was going to be temporary help cleaning my home while recovering has turned into a beautiful bimonthly relationship with an incredibly detailed cleaning crew whom I love and never want to end.",
-      initials: "LB",
-      source: 'facebook',
+    name: "Lara Spencer Bryant",
+    rating: 5,
+    date: "1 year ago",
+    text: "Clean Home Pros have been cleaning my home since 2016 after having surgery. What I thought was going to be temporary help cleaning my home while recovering has turned into a beautiful bimonthly relationship with an incredibly detailed cleaning crew whom I love and never want to end.",
+    initials: "LB",
+    source: "facebook",
   },
   // {
   //     name: "",
@@ -197,18 +201,40 @@ function StarRating({ count }: { count: number }) {
 
 function GoogleIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
-      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
-      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+        fill="#4285F4"
+      />
+      <path
+        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+        fill="#34A853"
+      />
+      <path
+        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+        fill="#FBBC05"
+      />
+      <path
+        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+        fill="#EA4335"
+      />
     </svg>
   );
 }
 
 function FacebookIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         fill="#1877F2"
         d="M24 12c0-6.63-5.37-12-12-12S0 5.37 0 12c0 5.99 4.39 10.95 10.13 11.85v-8.38H7.08V12h3.05V9.36c0-3 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.52c-1.49 0-1.96.93-1.96 1.87V12h3.33l-.53 3.47h-2.8v8.38C19.61 22.95 24 17.99 24 12z"
@@ -221,38 +247,40 @@ function ReviewText({ text, limit = 220 }: { text: string; limit?: number }) {
   const [expanded, setExpanded] = useState(false);
   const isLong = text.length > limit;
 
-  const cut = text.lastIndexOf(' ', limit);
+  const cut = text.lastIndexOf(" ", limit);
   const preview = text.slice(0, cut > 0 ? cut : limit) + "...";
 
   return (
     <p
-    style={{
-      fontFamily: "var(--font-jakarta), sans-serif",
+      style={{
+        fontFamily: "var(--font-jakarta), sans-serif",
         color: "#4a6a99",
         lineHeight: 1.65,
-    }}
-     className="text-sm mt-3">
-{expanded || !isLong ? text : preview}
-{isLong && (
-  <button
-  type="button" 
-  onClick={() => setExpanded((v) => !v)}
-  style={{
-    fontFamily: "var(--font-jakarta), sans-serif",
-    color: "#047A95",
-    fontWeight: 600,
-    background: "none",
-    border: "none",
-    padding: 0,
-    marginLeft: "0.35rem",
-    cursor: "pointer",
-  }}
-  className="hover:underline">
-    {expanded ? "Show less" : "Read more"}
-  </button>
-)}
+      }}
+      className="text-sm mt-3"
+    >
+      {expanded || !isLong ? text : preview}
+      {isLong && (
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          style={{
+            fontFamily: "var(--font-jakarta), sans-serif",
+            color: "#047A95",
+            fontWeight: 600,
+            background: "none",
+            border: "none",
+            padding: 0,
+            marginLeft: "0.35rem",
+            cursor: "pointer",
+          }}
+          className="hover:underline"
+        >
+          {expanded ? "Show less" : "Read more"}
+        </button>
+      )}
     </p>
-  )
+  );
 }
 
 export function HomePage() {
@@ -264,10 +292,20 @@ export function HomePage() {
         style={{ minHeight: "90vh", backgroundColor: "#012D63" }}
       >
         <div className="absolute inset-0">
+          {/* Mobile */}
+          <Image
+            src={heroImgMobile3}
+            alt="Professional cleaner cleaning sink with bright gloves and a sponge"
+            className="w-full h-full object-cover md:hidden"
+            style={{ opacity: 0.2 }}
+            placeholder="blur"
+          />
+
+          {/* Desktop  */}
           <Image
             src={heroImg}
             alt="Professional cleaner mopping a bright modern floor"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover hidden md:block"
             style={{ opacity: 0.2 }}
             placeholder="blur"
           />
@@ -311,7 +349,7 @@ export function HomePage() {
               style={{
                 fontFamily: "var(--font-jakarta), sans-serif",
                 // color: "rgba(255,255,255,0.78)",
-                color: '#ffffff',
+                color: "#ffffff",
                 lineHeight: 1.75,
               }}
               className="text-lg mb-8 max-w-lg"
@@ -573,8 +611,17 @@ export function HomePage() {
                       {r.date}
                     </div>
                   </div>
-                  <div className="ml-auto" aria-label={`Review from ${r.source === 'facebook' ? 'Facebook' : 'Google'}`}>
-                    {r.source === 'facebook' ? <FacebookIcon /> : <GoogleIcon /> }
+                  <div
+                    className="ml-auto"
+                    aria-label={`Review from ${
+                      r.source === "facebook" ? "Facebook" : "Google"
+                    }`}
+                  >
+                    {r.source === "facebook" ? (
+                      <FacebookIcon />
+                    ) : (
+                      <GoogleIcon />
+                    )}
                     {/* Google icon */}
                     {/* <svg
                       width="18"
@@ -619,8 +666,8 @@ export function HomePage() {
 
           {/* Leave a review CTA */}
           <div className="text-center mt-12">
-            <a 
-              href="https://search.google.com/local/writereview?placeid=ChIJwTxdJia2uKYRGHOyw5-fjnw" 
+            <a
+              href="https://search.google.com/local/writereview?placeid=ChIJwTxdJia2uKYRGHOyw5-fjnw"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -631,10 +678,10 @@ export function HomePage() {
                 borderRadius: "0.75rem",
               }}
               className="inline-flex items-center gap-2 px-7 py-3.5 text-sm shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
-              >
-                <Star size={16} fill="#fff" stroke="#fff" />
-                Leave us a Google Review
-              </a>
+            >
+              <Star size={16} fill="#fff" stroke="#fff" />
+              Leave us a Google Review
+            </a>
           </div>
         </div>
       </section>
