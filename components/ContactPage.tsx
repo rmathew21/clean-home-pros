@@ -66,7 +66,7 @@ const pillButtonStyle: React.CSSProperties = {
   cursor: "pointer",
 };
 
-const PHONE_DISPLAY = "(832) 776-9288";
+// const PHONE_DISPLAY = "(832) 776-9288";
 const PHONE_E164 = "+18327769288";
 const SMS_BODY = encodeURIComponent(
   "Hi Clean Home Pros, I'd like a quote for "
@@ -198,13 +198,16 @@ const AREAS = [
 // };
 
 export function ContactPage() {
+  type SubmitStatus = "idle" | "submitting" | "success" | "error";
+
   // simple message form
   const [msgName, setMsgName] = useState("");
   const [msgEmail, setMsgEmail] = useState("");
   const [msgPhone, setMsgPhone] = useState("");
   const [msgService, setMsgService] = useState<ServiceType>("");
   const [msgDetails, setMsgDetails] = useState("");
-  const [msgSubmitted, setMsgSubmitted] = useState(false);
+  // const [msgSubmitted, setMsgSubmitted] = useState(false);
+  const [msgStatus, setMsgStatus] = useState<SubmitStatus>("idle");
 
   //   consultation wizard
   const [consultOpen, setConsultOpen] = useState(false);
@@ -216,7 +219,8 @@ export function ContactPage() {
   const [frequency, setFrequency] = useState<Frequency>("");
   const [area, setArea] = useState("");
   const [details, setDetails] = useState("");
-  const [consultSubmitted, setConsultSubmitted] = useState(false);
+  // const [consultSubmitted, setConsultSubmitted] = useState(false);
+  const [consultStatus, setConsultStatus] = useState<SubmitStatus>("idle");
 
   // user-based reveal conditions
   const hasContact =
@@ -231,19 +235,107 @@ export function ContactPage() {
   const canSubmitConsult =
     hasContact && name.trim() !== "" && serviceComplete && area.trim() !== "";
 
-  function handleMessageSubmit(e: React.FormEvent) {
+  // for contact/message form
+  // const [msgStatus, setMsgStatus] = useState<SubmitStatus>("idle");
+
+  // for consultation form
+  // const [consultStatus, setConsultStatus] = useState<SubmitStatus>("idle");
+
+  const MESSAGE_FORM_ID = "mzdldozb";
+  const CONSULT_FORM_ID = "mpqgqbwd";
+
+  // contact/message form
+  const handleMessageSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Space for Formspree api route
-    setMsgSubmitted(true);
-  }
+    // setMsgSubmitted(true);
+    setMsgStatus("submitting");
 
-  function handleConsultSubmit(e: React.FormEvent) {
+    try {
+      const res = await fetch(`https://formspree.io/f/${MESSAGE_FORM_ID}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: msgName,
+          email: msgEmail,
+          phone: msgPhone,
+          service: msgService,
+          details: msgDetails,
+          _subject: `New website message from ${msgName}`,
+        }),
+      });
+
+      if (res.ok) {
+        setMsgStatus("success");
+        setMsgName("");
+        setMsgEmail("");
+        setMsgPhone("");
+        setMsgService("");
+        setMsgDetails("");
+      } else {
+        setMsgStatus("error");
+      }
+    } catch {
+      setMsgStatus("error");
+    }
+  };
+
+  const handleConsultSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!canSubmitConsult) return;
-    // TODO: POST the consultation payload to Formspree / a Server Action.
+    setConsultStatus("submitting");
+
+    const payload: Record<string, string> = {
+      contactMethod: method,
+      name,
+      service: SERVICE_LABELS[service as Exclude<ServiceType, "">] ?? "",
+      area,
+      details,
+      _subject: `New consultation request from ${name || "website"}`,
+    };
+    if (method === "phone") payload.phone = phone;
+    if (method === "email") payload.email = email;
+    if (service === "regular") payload.frequency = frequency;
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${CONSULT_FORM_ID}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        setConsultStatus("success");
+        // reset form
+        setMethod("");
+        setPhone("");
+        setEmail("");
+        setName("");
+        setService("");
+        setFrequency("");
+        setArea("");
+        setDetails("");
+      } else {
+        setConsultStatus("error");
+      }
+      // setConsultStatus(res.ok ? 'success' : 'error');
+    } catch {
+      setConsultStatus("error");
+    }
+
+    // if (res.ok) {
+    // reset wizard/show success state
+    // } else {
+    // show error
+    // }
+
     // Payload: { method, phone, email, name, service, frequency, area, details }
-    setConsultSubmitted(true);
-  }
+  };
 
   return (
     <div style={{ backgroundColor: MUTED_BG }}>
@@ -296,7 +388,197 @@ export function ContactPage() {
           style={{ alignItems: "start" }}
         >
           {/* Left simple msg form */}
-          {msgSubmitted ? (
+          {msgStatus === "success" ? (
+            <div
+              style={{
+                ...cardStyle,
+                textAlign: "center",
+                padding: "3rem 2rem",
+              }}
+            >
+              <div
+                style={{
+                  width: 56,
+                  height: 56,
+                  borderRadius: "50%",
+                  background: "#e8f5ee",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: "1rem",
+                }}
+              >
+                <Check size={28} color="#1b9e54" />
+              </div>
+              <h2
+                style={{
+                  fontFamily: FONT_SERIF,
+                  color: NAVY,
+                  fontSize: "1.4rem",
+                }}
+              >
+                Message sent!
+              </h2>
+              <p
+                style={{
+                  fontFamily: FONT_SANS,
+                  color: MUTED,
+                  marginTop: "0.4rem",
+                }}
+              >
+                Thanks for reaching out - we&rsquo;ll follow up shortly.
+              </p>
+              <button
+                type="button"
+                onClick={() => setMsgStatus("idle")}
+                style={{ ...pillButtonStyle, marginTop: "1.6rem" }}
+              >
+                Send another message
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleMessageSubmit} style={cardStyle}>
+              <h2
+                style={{
+                  fontFamily: FONT_SERIF,
+                  color: NAVY,
+                  fontSize: "1.5rem",
+                  marginBottom: "0.4rem",
+                }}
+              >
+                Send us a message
+              </h2>
+              <p
+                style={{
+                  fontFamily: FONT_SANS,
+                  color: MUTED,
+                  fontSize: "0.9rem",
+                  marginBottom: "1.5rem",
+                }}
+              >
+                Tell us what you need and we&rsquo;ll follow up shortly.
+              </p>
+
+              <div style={{ marginBottom: "1rem" }}>
+                <label htmlFor="msg-name" style={labelStyle}>
+                  Name
+                </label>
+                <input
+                  id="msg-name"
+                  type="text"
+                  required
+                  value={msgName}
+                  onChange={(e) => setMsgName(e.target.value)}
+                  style={inputStyle}
+                  placeholder="Your name"
+                />
+              </div>
+
+              <div style={{ marginBottom: "1rem" }}>
+                <label htmlFor="msg-email" style={labelStyle}>
+                  Email
+                </label>
+                <input
+                  id="msg-email"
+                  type="email"
+                  required
+                  value={msgEmail}
+                  onChange={(e) => setMsgEmail(e.target.value)}
+                  style={inputStyle}
+                  placeholder="you@example.com"
+                />
+              </div>
+
+              <div style={{ marginBottom: "1rem" }}>
+                <label htmlFor="msg-phone" style={labelStyle}>
+                  Phone
+                </label>
+                <input
+                  id="msg-phone"
+                  type="tel"
+                  required
+                  value={msgPhone}
+                  onChange={(e) => setMsgPhone(e.target.value)}
+                  style={inputStyle}
+                  placeholder="(281) 555-5555"
+                />
+              </div>
+
+              <div style={{ marginBottom: "1rem" }}>
+                <label htmlFor="msg-service" style={labelStyle}>
+                  Service you&rsquo;re interested in
+                </label>
+                <select
+                  id="msg-service"
+                  required
+                  value={msgService}
+                  onChange={(e) => setMsgService(e.target.value as ServiceType)}
+                  style={{ ...inputStyle, cursor: "pointer" }}
+                >
+                  <option value="" disabled>
+                    Select a service
+                  </option>
+                  <option value="regular">Regular Clean</option>
+                  <option value="deep">Deep Clean</option>
+                  <option value="moveinout">Move In / Out Clean</option>
+                </select>
+              </div>
+
+              <div style={{ marginBottom: "1rem" }}>
+                <label htmlFor="msg-details" style={labelStyle}>
+                  Additional details
+                </label>
+                <textarea
+                  id="msg-details"
+                  rows={4}
+                  value={msgDetails}
+                  onChange={(e) => setMsgDetails(e.target.value)}
+                  style={{ ...inputStyle, resize: "vertical" }}
+                  placeholder="Anything else we should know?"
+                />
+              </div>
+
+              {/* <button
+                type="submit"
+                style={{ ...pillButtonStyle, width: "100% " }}
+              >
+                Send Message
+              </button> */}
+
+              {msgStatus === "error" && (
+                <div
+                  role="alert"
+                  style={{
+                    background: "#fdecec",
+                    color: "#a12626",
+                    fontFamily: FONT_SANS,
+                    fontSize: "0.85rem",
+                    padding: "0.7rem 0.9rem",
+                    borderRadius: "0.5rem",
+                    marginBottom: "1rem",
+                  }}
+                >
+                  Something went wrong sending your message. Please try again or
+                  call us directly.
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={msgStatus === "submitting"}
+                style={{
+                  ...pillButtonStyle,
+                  width: "100%",
+                  opacity: msgStatus === "submitting" ? 0.6 : 1,
+                  cursor:
+                    msgStatus === "submitting" ? "not-allowed" : "pointer",
+                }}
+              >
+                {msgStatus === "submitting" ? "Sending…" : "Send Message"}
+              </button>
+            </form>
+          )}
+          {/* {msgSubmitted ? (
             <SuccessCard message="Your message is on its way. We&rsquo;ll get back to you within 24 hours." />
           ) : (
             <form onSubmit={handleMessageSubmit} style={cardStyle}>
@@ -407,7 +689,7 @@ export function ContactPage() {
                 Send Message
               </button>
             </form>
-          )}
+          )} */}
 
           {/* Right request free consultation form */}
           <div
@@ -470,7 +752,7 @@ export function ContactPage() {
               </p>
             </div>
 
-            {consultSubmitted ? (
+            {consultStatus === 'success' ? (
               <SuccessCard message="Your consultation request is in. We&rsquo;ll reach out using your preferred method to confirm details." />
             ) : (
               <div style={cardStyle}>
@@ -706,13 +988,15 @@ export function ContactPage() {
                     {/* submit */}
                     <button
                       type="submit"
-                      disabled={!canSubmitConsult}
+                      disabled={
+                        !canSubmitConsult || consultStatus === "submitting"
+                      }
                       style={{
                         ...pillButtonStyle,
                         width: "100%",
                         marginTop: "1.6rem",
-                        opacity: canSubmitConsult ? 1 : 0.45,
-                        cursor: canSubmitConsult ? "pointer" : "not-allowed",
+                        opacity: !canSubmitConsult || consultStatus === 'submitting' ? 0.45 : 1,
+                        cursor: !canSubmitConsult || consultStatus === 'submitting' ? "not-allowed" : "pointer",
                       }}
                     >
                       <Check size={18} />
