@@ -387,10 +387,12 @@ export function ContactPage() {
           {/* Left simple msg form */}
           {msgStatus === "success" ? (
             <div
+            ref={msgSuccessRef}
               style={{
                 ...cardStyle,
                 textAlign: "center",
                 padding: "3rem 2rem",
+                scrollMarginTop: '6rem'
               }}
             >
               <div
@@ -631,7 +633,7 @@ export function ContactPage() {
             </div>
 
             {consultStatus === "success" ? (
-              <div ref={consultSuccessRef}>
+              <div ref={consultSuccessRef} style={{ scrollMarginTop: '6rem' }}>
                 <SuccessCard message="Your consultation request is in. We&rsquo;ll reach out using your preferred method to confirm details." />
               </div>
             ) : (
