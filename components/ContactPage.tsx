@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Phone,
   Mail,
@@ -181,22 +181,6 @@ const AREAS = [
   "West University",
 ];
 
-// type FormState = {
-//   name: string;
-//   email: string;
-//   phone: string;
-//   service: string;
-//   message: string;
-// };
-
-// const initialForm: FormState = {
-//   name: "",
-//   email: "",
-//   phone: "",
-//   service: "",
-//   message: "",
-// };
-
 export function ContactPage() {
   type SubmitStatus = "idle" | "submitting" | "success" | "error";
 
@@ -206,7 +190,6 @@ export function ContactPage() {
   const [msgPhone, setMsgPhone] = useState("");
   const [msgService, setMsgService] = useState<ServiceType>("");
   const [msgDetails, setMsgDetails] = useState("");
-  // const [msgSubmitted, setMsgSubmitted] = useState(false);
   const [msgStatus, setMsgStatus] = useState<SubmitStatus>("idle");
 
   //   consultation wizard
@@ -219,9 +202,21 @@ export function ContactPage() {
   const [frequency, setFrequency] = useState<Frequency>("");
   const [area, setArea] = useState("");
   const [details, setDetails] = useState("");
-  // const [consultSubmitted, setConsultSubmitted] = useState(false);
+
   const [consultStatus, setConsultStatus] = useState<SubmitStatus>("idle");
 
+  
+  const consultSuccessRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (consultStatus === 'success') {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      consultSuccessRef.current?.scrollIntoView({
+        behavior: reduce ? 'auto' : 'smooth',
+        block: 'start',
+      });
+    }
+  }, [consultStatus]);
   // user-based reveal conditions
   const hasContact =
     (method === "phone" && phone.trim() !== "") ||
@@ -235,20 +230,17 @@ export function ContactPage() {
   const canSubmitConsult =
     hasContact && name.trim() !== "" && serviceComplete && area.trim() !== "";
 
-  // for contact/message form
-  // const [msgStatus, setMsgStatus] = useState<SubmitStatus>("idle");
-
-  // for consultation form
-  // const [consultStatus, setConsultStatus] = useState<SubmitStatus>("idle");
-
-  const MESSAGE_FORM_ID = "meebabzg";
+  const MESSAGE_FORM_ID = "mzdldozb";
   const CONSULT_FORM_ID = "mgojajzz";
+  // my message mzdldozb
+  // Lluvia message meebabzg
+  // my consult mpqgqbwd
+  // Lluvia consult mgojajzz
 
   // contact/message form
   const handleMessageSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Space for Formspree api route
-    // setMsgSubmitted(true);
+
     setMsgStatus("submitting");
 
     try {
@@ -323,18 +315,9 @@ export function ContactPage() {
       } else {
         setConsultStatus("error");
       }
-      // setConsultStatus(res.ok ? 'success' : 'error');
     } catch {
       setConsultStatus("error");
     }
-
-    // if (res.ok) {
-    // reset wizard/show success state
-    // } else {
-    // show error
-    // }
-
-    // Payload: { method, phone, email, name, service, frequency, area, details }
   };
 
   return (
@@ -538,13 +521,6 @@ export function ContactPage() {
                 />
               </div>
 
-              {/* <button
-                type="submit"
-                style={{ ...pillButtonStyle, width: "100% " }}
-              >
-                Send Message
-              </button> */}
-
               {msgStatus === "error" && (
                 <div
                   role="alert"
@@ -578,118 +554,6 @@ export function ContactPage() {
               </button>
             </form>
           )}
-          {/* {msgSubmitted ? (
-            <SuccessCard message="Your message is on its way. We&rsquo;ll get back to you within 24 hours." />
-          ) : (
-            <form onSubmit={handleMessageSubmit} style={cardStyle}>
-              <h2
-                style={{
-                  fontFamily: FONT_SERIF,
-                  color: NAVY,
-                  fontSize: "1.5rem",
-                  marginBottom: "0.4rem",
-                }}
-              >
-                Send us a message
-              </h2>
-              <p
-                style={{
-                  fontFamily: FONT_SANS,
-                  color: MUTED,
-                  fontSize: "0.9rem",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                Tell us what you need and we&rsquo;ll follow up shortly.
-              </p>
-
-              <div style={{ marginBottom: "1rem" }}>
-                <label htmlFor="msg-name" style={labelStyle}>
-                  Name
-                </label>
-                <input
-                  id="msg-name"
-                  type="text"
-                  required
-                  value={msgName}
-                  onChange={(e) => setMsgName(e.target.value)}
-                  style={inputStyle}
-                  placeholder="Your name"
-                />
-              </div>
-
-              <div style={{ marginBottom: "1rem" }}>
-                <label htmlFor="msg-email" style={labelStyle}>
-                  Email
-                </label>
-                <input
-                  id="msg-email"
-                  type="email"
-                  required
-                  value={msgEmail}
-                  onChange={(e) => setMsgEmail(e.target.value)}
-                  style={inputStyle}
-                  placeholder="you@example.com"
-                />
-              </div>
-
-              <div style={{ marginBottom: "1rem" }}>
-                <label htmlFor="msg-phone" style={labelStyle}>
-                  Phone
-                </label>
-                <input
-                  id="msg-phone"
-                  type="tel"
-                  required
-                  value={msgPhone}
-                  onChange={(e) => setMsgPhone(e.target.value)}
-                  style={inputStyle}
-                  placeholder="(281) 555-5555"
-                />
-              </div>
-
-              <div style={{ marginBottom: "1rem" }}>
-                <label htmlFor="msg-service" style={labelStyle}>
-                  Service you&rsquo;re interested in
-                </label>
-                <select
-                  id="msg-service"
-                  required
-                  value={msgService}
-                  onChange={(e) => setMsgService(e.target.value as ServiceType)}
-                  style={{ ...inputStyle, cursor: "pointer" }}
-                >
-                  <option value="" disabled>
-                    Select a service
-                  </option>
-                  <option value="regular">Regular Clean</option>
-                  <option value="deep">Deep Clean</option>
-                  <option value="moveinout">Move In / Out Clean</option>
-                </select>
-              </div>
-
-              <div style={{ marginBottom: "1rem" }}>
-                <label htmlFor="msg-details" style={labelStyle}>
-                  Additional details
-                </label>
-                <textarea
-                  id="msg-details"
-                  rows={4}
-                  value={msgDetails}
-                  onChange={(e) => setMsgDetails(e.target.value)}
-                  style={{ ...inputStyle, resize: "vertical" }}
-                  placeholder="Anything else we should know?"
-                />
-              </div>
-
-              <button
-                type="submit"
-                style={{ ...pillButtonStyle, width: "100% " }}
-              >
-                Send Message
-              </button>
-            </form>
-          )} */}
 
           {/* Right request free consultation form */}
           <div
@@ -752,8 +616,10 @@ export function ContactPage() {
               </p>
             </div>
 
-            {consultStatus === 'success' ? (
-              <SuccessCard message="Your consultation request is in. We&rsquo;ll reach out using your preferred method to confirm details." />
+            {consultStatus === "success" ? (
+              <div ref={consultSuccessRef}>
+                <SuccessCard message="Your consultation request is in. We&rsquo;ll reach out using your preferred method to confirm details." />
+              </div>
             ) : (
               <div style={cardStyle}>
                 <div
@@ -995,8 +861,14 @@ export function ContactPage() {
                         ...pillButtonStyle,
                         width: "100%",
                         marginTop: "1.6rem",
-                        opacity: !canSubmitConsult || consultStatus === 'submitting' ? 0.45 : 1,
-                        cursor: !canSubmitConsult || consultStatus === 'submitting' ? "not-allowed" : "pointer",
+                        opacity:
+                          !canSubmitConsult || consultStatus === "submitting"
+                            ? 0.45
+                            : 1,
+                        cursor:
+                          !canSubmitConsult || consultStatus === "submitting"
+                            ? "not-allowed"
+                            : "pointer",
                       }}
                     >
                       <Check size={18} />
