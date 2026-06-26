@@ -205,18 +205,32 @@ export function ContactPage() {
 
   const [consultStatus, setConsultStatus] = useState<SubmitStatus>("idle");
 
-  
   const consultSuccessRef = useRef<HTMLDivElement>(null);
+  const msgSuccessRef = useRef<HTMLDivElement>(null);
+
+  // useEffect(() => {
+  //   if (msgStatus === 'success') {
+  //     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  //     msgSuccessRef.current?.scrollIntoView({
+  //       behavior: reduce ? 'auto' : 'smooth',
+  //       block: 'start',
+  //     });
+  //   }
+  // }, [msgStatus]);
 
   useEffect(() => {
-    if (consultStatus === 'success') {
-      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      consultSuccessRef.current?.scrollIntoView({
-        behavior: reduce ? 'auto' : 'smooth',
-        block: 'start',
-      });
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    const behavior = reduce ? "auto" : "smooth";
+
+    if (msgStatus === "success") {
+      msgSuccessRef.current?.scrollIntoView({ behavior, block: "start" });
+    } else if (consultStatus === "success") {
+      consultSuccessRef.current?.scrollIntoView({ behavior, block: "start" });
     }
-  }, [consultStatus]);
+  }, [msgStatus, consultStatus]);
+
   // user-based reveal conditions
   const hasContact =
     (method === "phone" && phone.trim() !== "") ||
@@ -230,7 +244,7 @@ export function ContactPage() {
   const canSubmitConsult =
     hasContact && name.trim() !== "" && serviceComplete && area.trim() !== "";
 
-  const MESSAGE_FORM_ID = "mzdldozb";
+  const MESSAGE_FORM_ID = "meebabzg";
   const CONSULT_FORM_ID = "mgojajzz";
   // my message mzdldozb
   // Lluvia message meebabzg
