@@ -241,8 +241,8 @@ export function ContactPage() {
   // for consultation form
   // const [consultStatus, setConsultStatus] = useState<SubmitStatus>("idle");
 
-  const MESSAGE_FORM_ID = "mzdldozb";
-  const CONSULT_FORM_ID = "mpqgqbwd";
+  const MESSAGE_FORM_ID = "meebabzg";
+  const CONSULT_FORM_ID = "mgojajzz";
 
   // contact/message form
   const handleMessageSubmit = async (e: React.FormEvent) => {
