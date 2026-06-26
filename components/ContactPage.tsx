@@ -244,8 +244,8 @@ export function ContactPage() {
   const canSubmitConsult =
     hasContact && name.trim() !== "" && serviceComplete && area.trim() !== "";
 
-  const MESSAGE_FORM_ID = "meebabzg";
-  const CONSULT_FORM_ID = "mgojajzz";
+  const MESSAGE_FORM_ID = "mzdldozb";
+  const CONSULT_FORM_ID = "mpqgqbwd";
   // my message mzdldozb
   // Lluvia message meebabzg
   // my consult mpqgqbwd
