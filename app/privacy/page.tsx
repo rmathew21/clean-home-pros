@@ -9,14 +9,6 @@ const LAST_UPDATED = "June 26, 2026";
 
 export const metadata = privacyMetadata;
 
-function Flag({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="rounded bg-yellow-100 px-1 py-0.5 font-medium text-yellow-900">
-      {children}
-    </span>
-  );
-}
-
 function Section({
   title,
   children,

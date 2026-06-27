@@ -205,6 +205,30 @@ export function Footer() {
             © {new Date().getFullYear()} Clean Home Pros LLC. All rights
             reserved.
           </span>
+
+          <nav aria-label="legal" className="flex items-center gap-3">
+            <Link
+              href="/privacy"
+              className="no-underline hover:opacity-80 transition-opacity"
+              style={{ color: "rgba(255,255,255,0.6)" }}
+            >
+              Privacy Policy
+            </Link>
+            <span
+              aria-hidden="true"
+              style={{ color: "rgba(255,255,255,0.25)" }}
+            >
+              ·
+            </span>
+            <Link
+              href="/terms"
+              className="no-underline hover:opacity-80 transition-opacity"
+              style={{ color: "rgba(255,255,255,0.6)" }}
+            >
+              Terms of Service
+            </Link>
+          </nav>
+
           <span>
             Powered by{" "}
             <a
