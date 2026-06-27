@@ -75,3 +75,17 @@ export const contactMetadata: Metadata = pageMeta({
     "Request your free quote from Clean Home Pros LLC. We'll reach out within 24 hours to confirm your booking and answer any questions.",
   path: "contact",
 });
+
+export const privacyMetadata = pageMeta({
+  title: "Privacy Policy",
+  description:
+    "How Clean Home Pros LLC collects, uses, and protects the information you share when requesting a quote or contacting us.",
+  path: "privacy",
+});
+
+export const termsMetadata = pageMeta({
+  title: "Terms of Service",
+  description:
+    "The terms and conditions that apply when you book or use residential cleaning services from Clean Home Pros LLC.",
+  path: "terms",
+});
