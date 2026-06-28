@@ -78,7 +78,7 @@ export function Footer() {
               </svg>
             </a>
             <a
-              href="https://www.instagram.com/cleanhomepros832?fbclid=IwY2xjawSheixleHRuA2FlbQIxMABicmlkETFOMEp0aEQwd21NRHJRNUwxc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHogYla6XlUMlIHf8Be1ShPIpWmg_DwoKogO-QiJ15St6kkH0eW16GDGov95C_aem_dhN1dJATJTRzpMgxOrH3Kw"
+              href="https://www.instagram.com/cleanhomepros832"
               aria-label="Instagram"
               style={{ backgroundColor: "rgba(255,255,255,0.1" }}
               className="w-8 h-8 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"

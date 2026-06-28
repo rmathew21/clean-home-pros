@@ -516,7 +516,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Google Reviews */}
+      {/* Client Reviews */}
       <section className="py-20 px-6" style={{ backgroundColor: "#fff " }}>
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
@@ -538,7 +538,7 @@ export function HomePage() {
                 fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
               }}
             >
-              Google Reviews
+              Client Reviews
             </h2>
             <div className="flex items-center justify-center gap-2 mt-3">
               <div className="flex gap-0.5">

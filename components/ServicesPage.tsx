@@ -40,7 +40,7 @@ const regularFrequencies = [
   {
     label: "Monthly",
     badge: "",
-    desc: "A thorough monthly clean or those who keep up day-to-day but want a professional refresh each month.",
+    desc: "A thorough monthly clean for those who keep up day-to-day but want a professional refresh each month.",
     includes: [
       "Detailed surface dusting",
       "Full vacuum & mop",
@@ -286,7 +286,7 @@ export function ServicesPage() {
           >
             <Image
               src={deepImg}
-              alt="Golved hand holding a sudsy sponge"
+              alt="Gloved hand holding a sudsy sponge"
               fill
               className="object-cover"
               placeholder="blur"
