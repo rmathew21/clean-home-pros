@@ -1,9 +1,10 @@
-// import type { Metadata } from "next";
 import { rootMetadata } from "@/lib/metadata";
 import { Plus_Jakarta_Sans, Lora } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -19,7 +20,7 @@ const lora = Lora({
   display: "swap",
 });
 
-export const metadata = rootMetadata;
+export const metadata: Metadata = rootMetadata;
 
 export default function RootLayout({
   children,
@@ -34,6 +35,7 @@ export default function RootLayout({
         <Navbar />
         <main style={{ flex: 1 }}>{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
