@@ -19,7 +19,7 @@ const TEAL = "#047A95";
 const MUTED = "#4a6a99";
 const MUTED_BG = "#f0f6ff";
 const BORDER = "1px solid rgba(1,45,99,0.1)";
-const FONT_SANS = 'var(--font-jakarta), sans-serif"';
+const FONT_SANS = "var(--font-jakarta), sans-serif";
 const FONT_SERIF = "var(--font-lora), serif";
 
 const cardStyle: React.CSSProperties = {
@@ -387,12 +387,12 @@ export function ContactPage() {
           {/* Left simple msg form */}
           {msgStatus === "success" ? (
             <div
-            ref={msgSuccessRef}
+              ref={msgSuccessRef}
               style={{
                 ...cardStyle,
                 textAlign: "center",
                 padding: "3rem 2rem",
-                scrollMarginTop: '6rem'
+                scrollMarginTop: "6rem",
               }}
             >
               <div
@@ -633,7 +633,7 @@ export function ContactPage() {
             </div>
 
             {consultStatus === "success" ? (
-              <div ref={consultSuccessRef} style={{ scrollMarginTop: '6rem' }}>
+              <div ref={consultSuccessRef} style={{ scrollMarginTop: "6rem" }}>
                 <SuccessCard message="Your consultation request is in. We&rsquo;ll reach out using your preferred method to confirm details." />
               </div>
             ) : (
