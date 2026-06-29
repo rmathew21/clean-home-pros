@@ -209,27 +209,39 @@ export function ContactPage() {
   const msgSuccessRef = useRef<HTMLDivElement>(null);
 
   // useEffect(() => {
-  //   if (msgStatus === 'success') {
-  //     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  //     msgSuccessRef.current?.scrollIntoView({
-  //       behavior: reduce ? 'auto' : 'smooth',
-  //       block: 'start',
-  //     });
+  //   const reduce = window.matchMedia(
+  //     "(prefers-reduced-motion: reduce)"
+  //   ).matches;
+  //   const behavior = reduce ? "auto" : "smooth";
+
+  //   if (msgStatus === "success") {
+  //     msgSuccessRef.current?.scrollIntoView({ behavior, block: "start" });
+  //   } else if (consultStatus === "success") {
+  //     consultSuccessRef.current?.scrollIntoView({ behavior, block: "start" });
   //   }
-  // }, [msgStatus]);
+  // }, [msgStatus, consultStatus]);
 
   useEffect(() => {
+    if (msgStatus !== "success") return;
     const reduce = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    const behavior = reduce ? "auto" : "smooth";
+    msgSuccessRef.current?.scrollIntoView({
+      behavior: reduce ? "auto" : "smooth",
+      block: "start",
+    });
+  }, [msgStatus]);
 
-    if (msgStatus === "success") {
-      msgSuccessRef.current?.scrollIntoView({ behavior, block: "start" });
-    } else if (consultStatus === "success") {
-      consultSuccessRef.current?.scrollIntoView({ behavior, block: "start" });
-    }
-  }, [msgStatus, consultStatus]);
+  useEffect(() => {
+    if (consultStatus !== "success") return;
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    consultSuccessRef.current?.scrollIntoView({
+      behavior: reduce ? "auto" : "smooth",
+      block: "start",
+    });
+  }, [consultStatus]);
 
   // user-based reveal conditions
   const hasContact =
